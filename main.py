@@ -115,35 +115,35 @@ from sys import stdin
 # p3.2
 
 
-lines = [line.strip() for line in stdin.readlines()]
-
-playboard = {}
-
-for line in lines:
-    id, at, coord, size = line.split(" ")
-    x, y = coord.split(",")
-    y = y[:-1]
-    x, y = int(x), int(y)
-    height, width = size.split("x")
-    for i in range(int(height)):
-        for j in range(int(width)):
-            tup = (x+i, y+j)
-            playboard[tup] = playboard.get(tup, 0) + 1
-
-for line in lines:
-    id, at, coord, size = line.split(" ")
-    x, y = coord.split(",")
-    y = y[:-1]
-    x, y = int(x), int(y)
-    height, width = size.split("x")
-    does_it_pass = True
-    for i in range(int(height)):
-        for j in range(int(width)):
-            tup = (x+i, y+j)
-            if playboard[tup] != 1:
-                does_it_pass = False
-    if does_it_pass:
-        print id
+# lines = [line.strip() for line in stdin.readlines()]
+#
+# playboard = {}
+#
+# for line in lines:
+#     id, at, coord, size = line.split(" ")
+#     x, y = coord.split(",")
+#     y = y[:-1]
+#     x, y = int(x), int(y)
+#     height, width = size.split("x")
+#     for i in range(int(height)):
+#         for j in range(int(width)):
+#             tup = (x+i, y+j)
+#             playboard[tup] = playboard.get(tup, 0) + 1
+#
+# for line in lines:
+#     id, at, coord, size = line.split(" ")
+#     x, y = coord.split(",")
+#     y = y[:-1]
+#     x, y = int(x), int(y)
+#     height, width = size.split("x")
+#     does_it_pass = True
+#     for i in range(int(height)):
+#         for j in range(int(width)):
+#             tup = (x+i, y+j)
+#             if playboard[tup] != 1:
+#                 does_it_pass = False
+#     if does_it_pass:
+#         print id
 
 #
 # total_count = 0
@@ -152,3 +152,62 @@ for line in lines:
 #         total_count += 1
 #
 # print total_count
+
+# p4
+# import datetime
+#
+# def compare(a, b):
+#     return cmp(datetime.datetime.strptime(a[1:].split("] ")[0], "%Y-%m-%d %H:%M"), datetime.datetime.strptime(b[1:].split("] ")[0], "%Y-%m-%d %H:%M"))
+#
+#
+# lines = [line.strip() for line in stdin.readlines()]
+# lines.sort(compare)
+#
+# print lines
+# # for date_time, data in lines:
+#     # datetime.strptime("21/11/06 16:30", "%d/%m/%y %H:%M")
+#     # 1518-11-01 00:25
+#     # datetime.strptime(date_time, "%y/%m/%d %H:%M")
+# shifts = []
+# this_shift = []
+#
+# for line in lines:
+#     if "begins shift" in line:
+#         if this_shift:
+#             shifts.append(this_shift)
+#         this_shift = [line]
+#     else:
+#         this_shift.append(line)
+#
+# guards = {}
+# guard_count = {}
+#
+# for t_shift in shifts:
+#     date, time, guard, guard_id, begins, word_shift = t_shift[0].split(' ')
+#     shift = t_shift[1:]
+#     guards.setdefault(guard_id, {})
+#     this_guard = guards[guard_id]
+#     for i in range(0, len(shift), 2):
+#         print shift
+#         start = shift[i]
+#         start_time = int(start.split("] falls")[0].split(":")[-1])
+#         end = shift[i+1]
+#         end_time = int(end.split("] wakes up")[0].split(":")[-1])
+#         for time in range(start_time, end_time):
+#
+#             this_guard[time] = this_guard.get(time, 0) + 1
+#             guard_count[guard_id] = guard_count.get(guard_id, 0) + 1
+
+# print max(guard_count.values())
+# print guard_count
+#
+# print guards["#3557"]
+
+
+# print guards["#269"]
+#
+# print 3557 * 30
+# print 269 * 39
+
+# print [(guard, minz.values()) for guard, minz in guards.items()]
+# print [(guard, max(minz.values()or [1, 1])) for guard, minz in guards.items()]
